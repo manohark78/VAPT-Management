@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: vapt-management
+  profiles:
+    default: dev
+  h2:
+    console:
+      enabled: false
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 52MB
+      max-request-size: 55MB
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+      probes:
+        enabled: true
+
+vapt:
+  security:
+    admin-initial-password: ${VAPT_ADMIN_INITIAL_PASSWORD:}
+    allowed-email-domain: ${VAPT_ALLOWED_EMAIL_DOMAIN:transunion.com}
+    activation-token-ttl-hours: ${VAPT_ACTIVATION_TOKEN_TTL_HOURS:24}
+  storage:
+    root-dir: ${VAPT_STORAGE_ROOT:./data/storage/uploads}
+  enrichment:
+    batch-size: ${VAPT_ENRICHMENT_BATCH_SIZE:250}
+    hostname-normalization:
+      suffixes: ${VAPT_ENRICHMENT_HOST_SUFFIXES:}
+  reconciliation:
+    batch-size: ${VAPT_RECONCILIATION_BATCH_SIZE:250}
+    close-missing-on-complete-snapshot: ${VAPT_CLOSE_MISSING_FINDINGS:false}
+    rca-admin-review-required: ${VAPT_RCA_ADMIN_REVIEW_REQUIRED:true}

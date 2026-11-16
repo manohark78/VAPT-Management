@@ -1,0 +1,36 @@
+# Local databases, uploaded reports, and runtime logs contain sensitive state.
+/data/
+/logs/
+**/data/
+**/logs/
+*.mv.db
+*.trace.db
+*.lock.db
+*.log
+*.log.*
+
+# Local IDE and Maven repository state.
+/.idea/
+/.m2/
+**/.idea/
+**/.m2/
+.vscode/
+
+# Build output and installed dependencies.
+**/target/
+/frontend/node_modules/
+/frontend/dist/
+
+# Local environment and credential files.
+.env
+.env.*
+!.env.example
+**/*.pem
+**/*.key
+**/*.p12
+**/*.jks
+
+# OS-generated files.
+Thumbs.db
+Desktop.ini
+.DS_Store

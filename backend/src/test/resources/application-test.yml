@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:vapt_test;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    clean-disabled: false
+
+vapt:
+  security:
+    admin-initial-password: test-admin-secret-pass
+  storage:
+    root-dir: ./target/test-storage
+
+logging:
+  level:
+    com.company.vapt: DEBUG
+    org.flywaydb: DEBUG
