@@ -68,3 +68,28 @@ AppSec Findings PT is intentionally excluded; its Finding ID/Record Id identity 
 The real-data UID completeness, per-import uniqueness and cross-import stability profile remains unavailable. Lifecycle policy for closure/reopen/return and RCA is undefined; complete-snapshot semantics are not declared. These behaviors remain disabled.
 
 **Next task: Phase 6B — safely profile committed UID imports for the five general sections, then confirm identity stability and lifecycle/snapshot/RCA policy before implementing broader weekly reconciliation behavior.** Keep GDP VA Report and Internal VA Brinqa independent. Keep AppSec separate pending a defined identity mapping.
+
+
+
+
+
+
+
+
+Work on the existing application only. Preserve all currently working CMDB mappings, report imports, dashboards and business logic. Do not rebuild existing functionality.
+
+Implement these improvements:
+
+1. Remediation: Verify existing implementation first. For every applicable report section, provide a "Remediation" column with four actions: "False Positive Raised", "False Positive Approved", "Remediated", and "Remediation Date". Show a date picker when the date action is selected. Automatically persist selections against the finding's stable identity. Preserve remediation history across subsequent report uploads, even when the new source file does not contain remediation fields.
+
+2. Report comparison and trends: Compare every newly imported report with the previous report from the same section. Identify NEW, REPEATED, REMEDIATED/MISSING and RETURNED findings using the existing reliable finding identity. Preserve historical snapshots and remediation data. Do not classify missing findings as remediated when the report is partial or incomplete. Show report-wise comparison and weekly/monthly trends independently for each section.
+
+3. Data and export: Display the application-managed Remediation column in the Data tab and include its action/date in the exported Excel Data sheet. Never modify the original uploaded file.
+
+4. Consistent responsive UI: Standardize the layout and placement of headers, Upload, History, Export, Dashboard, Comments and Data across all report sections. Preserve independent section uploads and section-specific data. Make layouts responsive across screen sizes.
+
+5. Charts: Fix overlapping or hidden labels, legends and text. Make charts responsive, readable and appropriately sized.
+
+First inspect the current application's implementation. Reuse existing functionality and implement only missing or defective parts. Do not duplicate features, perform another lengthy audit, or introduce unnecessary architecture changes.
+
+Run relevant automated tests and frontend build. Fix regressions and provide a concise summary of changes, verification results and remaining blockers.
